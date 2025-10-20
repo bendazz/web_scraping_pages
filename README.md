@@ -2,19 +2,12 @@
 
 This repository contains a small static website you can host on GitHub Pages for teaching web scraping with Python `requests` and `BeautifulSoup`.
 
-Each page focuses on a concept to practice parsing HTML and extracting data. Because it's a static site, it's ideal for deterministic, repeatable exercises.
+Currently, it includes a single practice page focused on basic text (multiple h1/h2/h3 headings and paragraphs). You can add more pages over time as lessons progress.
 
 ## Pages
 
-- `index.html`: hub with links to all practice pages
-- `pages/basic-text.html`: headings and paragraphs
-- `pages/lists-links-images.html`: lists, links, and images (including a lazy-loaded image pattern)
-- `pages/tables.html`: simple and complex tables (colspan/rowspan)
-- `pages/nested-structure.html`: nested elements and hierarchy (articles, comments)
-- `pages/attributes-selectors.html`: attributes, classes, data-*, and attribute selectors
-- `pages/forms.html`: forms and input fields (static only)
-- `pages/javascript-content.html`: JS-rendered elements (not visible to `requests`)
-- `pages/pagination/page1.html`, `page2.html`, `page3.html`: pagination demo with prev/next links
+- `index.html`: hub
+- `pages/basic-text.html`: headings and paragraphs (multiple instances for counting/grouping)
 
 ## Local preview
 
@@ -36,7 +29,7 @@ Then visit http://localhost:8000/
 
 If you use a custom domain, configure DNS and set it in Pages settings.
 
-## Starter Python snippets
+## Starter Python snippet
 
 Install dependencies:
 
@@ -63,20 +56,15 @@ paragraphs = [p.get_text(strip=True) for p in soup.select("p")]
 Select by attributes and classes:
 
 ```python
-url = "https://<your-username>.github.io/<repo-name>/pages/attributes-selectors.html"
+url = "https://<your-username>.github.io/<repo-name>/pages/basic-text.html"
 soup = BeautifulSoup(requests.get(url, timeout=10).text, "html.parser")
 
-on_sale = [li["data-sku"] for li in soup.select("#products li.on-sale")]
-featured_name = soup.select_one("#products li.featured .name").get_text(strip=True)
-users = [
-	{
-		"username": a.get_text(strip=True),
-		"href": a["href"],
-		"active": tr.get("data-active") == "true",
-	}
-	for tr in soup.select("#users tbody tr")
-	for a in [tr.select_one("a.user")]
-]
+# Count headings and paragraphs
+h1s = soup.select("#content h1")
+h2s = soup.select("#content h2")
+h3s = soup.select("#content h3")
+paras = soup.select("#content p")
+print(len(h1s), len(h2s), len(h3s), len(paras))
 ```
 
 Tables to dicts:
@@ -126,10 +114,9 @@ print("Gamma present?", "Gamma" in html)   # False (rendered by JS)
 
 ## Teaching ideas
 
-- Assign each page as a small exercise; progress from selectors to pagination.
-- Ask students to extract attributes (href, src, data-*) vs text content.
+- Start with counting and scoping selections inside `#content`.
+- Ask students to compute paragraph counts per heading.
 - Discuss robots.txt and ethics; add delays and headers to mimic polite clients.
-- For advanced topics, compare `requests` results vs a headless browser (e.g., Playwright) on the JS page.
 
 ## License
 
