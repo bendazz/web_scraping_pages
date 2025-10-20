@@ -8,6 +8,7 @@ Currently, it includes a single practice page focused on basic text (multiple h1
 
 - `index.html`: hub
 - `pages/basic-text.html`: headings and paragraphs (multiple instances for counting/grouping)
+- `pages/simple-table.html`: one simple table with 10 rows
 
 ## Local preview
 
@@ -65,6 +66,20 @@ h2s = soup.select("#content h2")
 h3s = soup.select("#content h3")
 paras = soup.select("#content p")
 print(len(h1s), len(h2s), len(h3s), len(paras))
+
+# Parse simple table
+import pandas as pd  # optional but handy
+url = "https://<your-username>.github.io/<repo-name>/pages/simple-table.html"
+soup = BeautifulSoup(requests.get(url, timeout=10).text, "html.parser")
+
+table = soup.select_one("#products")
+headers = [th.get_text(strip=True) for th in table.select("thead th")]
+rows = []
+for tr in table.select("tbody tr"):
+	rows.append([td.get_text(strip=True) for td in tr.select("td")])
+
+data = [dict(zip(headers, r)) for r in rows]
+print(data[0])
 ```
 
 Tables to dicts:
