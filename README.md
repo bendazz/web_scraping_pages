@@ -9,6 +9,7 @@ Currently, it includes a single practice page focused on basic text (multiple h1
 - `index.html`: hub
 - `pages/basic-text.html`: headings and paragraphs (multiple instances for counting/grouping)
 - `pages/simple-table.html`: one simple table with 10 rows
+- `pages/many-tables.html`: multiple tables with varying shapes and edge cases
 
 ## Local preview
 
@@ -80,6 +81,28 @@ for tr in table.select("tbody tr"):
 
 data = [dict(zip(headers, r)) for r in rows]
 print(data[0])
+
+# Iterate over many tables
+url = "https://<your-username>.github.io/<repo-name>/pages/many-tables.html"
+soup = BeautifulSoup(requests.get(url, timeout=10).text, "html.parser")
+
+tables = soup.select("table")
+print("Found", len(tables), "tables")
+def parse_table(table):
+	# Try to read headers from thead, else fall back to first row
+	headers = [th.get_text(strip=True) for th in table.select("thead th")]
+	if not headers:
+		first = table.find("tr")
+		headers = [th.get_text(strip=True) for th in first.find_all(["th","td"])]
+		body_rows = first.find_next_siblings("tr")
+	else:
+		body_rows = table.select("tbody tr") or table.find_all("tr")[1:]
+	rows = [[td.get_text(strip=True) for td in tr.find_all("td")] for tr in body_rows]
+	return headers, rows
+
+for t in tables:
+	headers, rows = parse_table(t)
+	print(t.get("id") or "(no id)", "->", len(headers), "cols,", len(rows), "rows")
 ```
 
 Tables to dicts:

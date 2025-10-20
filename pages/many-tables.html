@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice: Many Tables</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Practice: Many Tables</h1>
+      <p class="note">Goal: detect and parse multiple tables of different shapes.</p>
+      <nav class="nav"><a href="../index.html">Home</a></nav>
+    </header>
+    <main>
+      <section>
+        <h2>Small 2x3</h2>
+        <table id="t1">
+          <thead><tr><th>A</th><th>B</th></tr></thead>
+          <tbody>
+            <tr><td>a1</td><td>b1</td></tr>
+            <tr><td>a2</td><td>b2</td></tr>
+            <tr><td>a3</td><td>b3</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>3 columns, 5 rows</h2>
+        <table id="t2">
+          <thead><tr><th>C1</th><th>C2</th><th>C3</th></tr></thead>
+          <tbody>
+            <tr><td>r1c1</td><td>r1c2</td><td>r1c3</td></tr>
+            <tr><td>r2c1</td><td>r2c2</td><td>r2c3</td></tr>
+            <tr><td>r3c1</td><td>r3c2</td><td>r3c3</td></tr>
+            <tr><td>r4c1</td><td>r4c2</td><td>r4c3</td></tr>
+            <tr><td>r5c1</td><td>r5c2</td><td>r5c3</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>4 columns, 4 rows</h2>
+        <table id="t3">
+          <thead><tr><th>W</th><th>X</th><th>Y</th><th>Z</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+            <tr><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+            <tr><td>9</td><td>10</td><td>11</td><td>12</td></tr>
+            <tr><td>13</td><td>14</td><td>15</td><td>16</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Wide header (6 columns), 3 rows</h2>
+        <table id="t4">
+          <thead><tr><th>H1</th><th>H2</th><th>H3</th><th>H4</th><th>H5</th><th>H6</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+            <tr><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td></tr>
+            <tr><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Single column, 8 rows</h2>
+        <table id="t5">
+          <thead><tr><th>Only</th></tr></thead>
+          <tbody>
+            <tr><td>a</td></tr>
+            <tr><td>b</td></tr>
+            <tr><td>c</td></tr>
+            <tr><td>d</td></tr>
+            <tr><td>e</td></tr>
+            <tr><td>f</td></tr>
+            <tr><td>g</td></tr>
+            <tr><td>h</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>No thead (inferred headers)</h2>
+        <table id="t6">
+          <tr><th>ID</th><th>Name</th><th>Score</th></tr>
+          <tr><td>1</td><td>Ana</td><td>92</td></tr>
+          <tr><td>2</td><td>Bo</td><td>88</td></tr>
+          <tr><td>3</td><td>Cy</td><td>95</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Mixed cells (some empty)</h2>
+        <table id="t7">
+          <thead><tr><th>Key</th><th>Val</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr><td>k1</td><td>v1</td><td></td></tr>
+            <tr><td>k2</td><td></td><td>missing val</td></tr>
+            <tr><td></td><td>v3</td><td>missing key</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Numeric with commas and currency</h2>
+        <table id="t8">
+          <thead><tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr><td>A</td><td>1,000</td><td>$2.50</td><td>$2,500.00</td></tr>
+            <tr><td>B</td><td>250</td><td>$10.00</td><td>$2,500.00</td></tr>
+            <tr><td>C</td><td>3</td><td>$0.99</td><td>$2.97</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Attributes for selectors</h2>
+        <table id="t9" class="stats" data-topic="metrics">
+          <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr data-row="1"><td>views</td><td>120</td></tr>
+            <tr data-row="2"><td>likes</td><td>30</td></tr>
+            <tr data-row="3"><td>shares</td><td>4</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+  </html>
