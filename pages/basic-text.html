@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice 1: Basic Text</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Practice 1: Basic Text</h1>
+      <p class="note">Goal: extract and count multiple headings (h1, h2, h3) and their paragraphs.</p>
+      <nav class="nav"><a href="../index.html">Home</a></nav>
+    </header>
+    <main>
+      <section id="content">
+        <h2>Content</h2>
+        <article id="ch-1" class="chapter" data-chapter="1">
+          <h1 class="chapter-title">Chapter 1: Getting Started</h1>
+          <p>Web scraping is the automated collection of information from web pages. In this chapter, we'll explore the simplest structures.</p>
+          <p class="intro">Before scraping, identify your target elements and plan your selectors.</p>
+
+          <h2 id="ch-1-s1" class="section-title" data-section="1.1">Section 1.1: Overview</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at dui ante. Suspendisse potenti.</p>
+          <p>Etiam ut nunc ac nunc semper pretium. Sed id venenatis nisl, non laoreet nisi.</p>
+
+          <h3 id="ch-1-t1" class="topic-title" data-topic="1.1.1">Topic 1.1.1: Elements</h3>
+          <p>Headings (h1–h6) give structure. Paragraphs contain body text.</p>
+          <p>Use semantic tags to your advantage when writing selectors.</p>
+
+          <h3 id="ch-1-t2" class="topic-title" data-topic="1.1.2">Topic 1.1.2: Text Extraction</h3>
+          <p>Strip whitespace and normalize text when comparing values.</p>
+          <p>Beware of nested tags inside paragraphs, like <strong>strong</strong> and <em>em</em>.</p>
+        </article>
+
+        <article id="ch-2" class="chapter" data-chapter="2">
+          <h1 class="chapter-title">Chapter 2: Selecting Content</h1>
+          <p>Selectors can be based on tag names, classes, ids, or attributes.</p>
+          <p class="note">In BeautifulSoup, prefer <code>select</code>/<code>select_one</code> for CSS selectors.</p>
+          <p>Count how many paragraphs appear under each heading level on this page.</p>
+
+          <h2 id="ch-2-s1" class="section-title" data-section="2.1">Section 2.1: Tag Selectors</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at arcu quis eros aliquet rhoncus.</p>
+          <p>Nam fermentum neque vitae mi volutpat, et venenatis quam rhoncus.</p>
+          <p>Aliquam erat volutpat. Donec sit amet mi non purus fermentum convallis.</p>
+
+          <h3 id="ch-2-t1" class="topic-title" data-topic="2.1.1">Topic 2.1.1: By Tag</h3>
+          <p>Using <code>soup.find_all('p')</code> returns all paragraphs.</p>
+          <p>Combine with parent scoping to count paragraphs per section.</p>
+
+          <h3 id="ch-2-t2" class="topic-title" data-topic="2.1.2">Topic 2.1.2: Scoping</h3>
+          <p>Find a container, then search inside it: <code>container.select('h3 + p')</code>.</p>
+          <p>Practice selecting siblings and descendants.</p>
+        </article>
+
+        <article id="ch-3" class="chapter" data-chapter="3">
+          <h1 class="chapter-title">Chapter 3: Counting Practice</h1>
+          <p>In this chapter, focus on counting and grouping text by headings.</p>
+          <p>Try computing totals per heading level and per chapter.</p>
+
+          <h2 id="ch-3-s1" class="section-title" data-section="3.1">Section 3.1: Totals</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>Curabitur id neque nec justo ultricies tincidunt.</p>
+
+          <h3 id="ch-3-t1" class="topic-title" data-topic="3.1.1">Topic 3.1.1: Per Section Counts</h3>
+          <p>Count only the paragraphs that appear after this h3 and before the next heading.</p>
+          <p>Repeat for each h3 to compare counts.</p>
+
+          <h3 id="ch-3-t2" class="topic-title" data-topic="3.1.2">Topic 3.1.2: Edge Cases</h3>
+          <p>Some sections may have two paragraphs, others three—design your code to handle variation.</p>
+        </article>
+      </section>
+    </main>
+    <footer>
+      <small class="note">Practice selecting by tag, class, id, and attribute.</small>
+    </footer>
+  </body>
+  </html>

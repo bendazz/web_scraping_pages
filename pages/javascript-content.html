@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice 7: JavaScript-rendered Content</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Practice 7: JavaScript-rendered Content</h1>
+      <p class="note">Goal: see that requests gets only static HTML; the dynamic list below is client-rendered.</p>
+      <nav class="nav"><a href="../index.html">Home</a></nav>
+    </header>
+    <main>
+      <section>
+        <h2>Static vs Dynamic</h2>
+        <p>This paragraph is static and will be present in the HTML source.</p>
+        <div id="dynamic">
+          <p class="note">Below items are injected by JavaScript at runtime:</p>
+          <ul id="items"></ul>
+        </div>
+      </section>
+    </main>
+    <script>
+      const data = [
+        { id: 1, name: 'Alpha' },
+        { id: 2, name: 'Beta' },
+        { id: 3, name: 'Gamma' }
+      ];
+      const ul = document.getElementById('items');
+      data.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.id}: ${item.name}`;
+        ul.appendChild(li);
+      });
+    </script>
+  </body>
+  </html>

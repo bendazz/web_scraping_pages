@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Scraping Practice Site</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Web Scraping Practice Site</h1>
+      <p>A collection of simple pages to practice scraping with Python requests and BeautifulSoup.</p>
+    </header>
+
+    <main>
+      <section>
+        <h2>Practice Pages</h2>
+        <ol>
+          <li><a href="pages/basic-text.html">Basic text: headings and paragraphs</a></li>
+          <li><a href="pages/lists-links-images.html">Lists, links, and images</a></li>
+          <li><a href="pages/tables.html">Tables (simple and complex)</a></li>
+          <li><a href="pages/nested-structure.html">Nested structure and hierarchy</a></li>
+          <li><a href="pages/attributes-selectors.html">Attributes and selector practice</a></li>
+          <li><a href="pages/forms.html">Forms and inputs</a></li>
+          <li><a href="pages/javascript-content.html">JavaScript-rendered content (limitations)</a></li>
+          <li><a href="pages/pagination/page1.html">Pagination (Page 1)</a></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Tips</h2>
+        <ul>
+          <li>View page source to understand the HTML you will parse.</li>
+          <li>Prefer semantic selectors (ids, classes, attributes) over brittle XPath when possible.</li>
+          <li>Remember: requests does not execute JavaScript. You will only see static HTML from the server.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Made for teaching web scraping. Hostable via GitHub Pages.</p>
+    </footer>
+  </body>
+  </html>
